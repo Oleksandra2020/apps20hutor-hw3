@@ -1,5 +1,5 @@
 package ua.edu.ucu;
-
+import java.util.Objects;
 
 class Student {
 
@@ -34,6 +34,20 @@ class Student {
     @Override
     public String toString() {
         return "Student{name=" + name + ", surname=" + surname + ", " + "GPA=" + GPA + ", year=" + year + '}';
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (o.getClass() != this.getClass())
+        {
+            return false;
+        }
+        Student student = (Student) o;
+        return (this.getSurname().equals(student.getSurname())
+                && this.getName().equals(student.getName())
+                && this.getYear() == student.getYear()
+                && this.getGPA() == student.getGPA());
     }
 
 }
