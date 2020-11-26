@@ -1,9 +1,13 @@
 package ua.edu.ucu.smartarr;
 
+import lombok.Getter;
+import lombok.Setter;
+
 // Base array for decorators
 public class BaseArray implements SmartArray {
 
-    public Object[] array;
+    @Getter @Setter
+    private Object[] array;
 
     public BaseArray()
     {

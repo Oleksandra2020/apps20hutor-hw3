@@ -55,23 +55,24 @@ public class SmartArrayApp {
         MyPredicate pr = new MyPredicate() {
             @Override
             public boolean test(Object t) {
-                return (((Student) t).getGPA() >= 4
-                        && ((Student) t).getYear() == 2);
+                int minGPA = 4;
+                int year = 2;
+                return (((Student) t).getGPA() >= minGPA
+                        && ((Student) t).getYear() == year);
             }
         };
 
         MyComparator cmp = new MyComparator() {
             @Override
             public int compare(Object firstObject, Object secondObject) {
-                Student firstStudent = (Student) firstObject;
-                Student secondStudent = (Student) secondObject;
+                String firstStudent = ((Student) firstObject).getSurname();
+                String secondStudent = ((Student) secondObject).getSurname();
                 int diff;
 
-                for (int i = 0; i < (firstStudent.getSurname().length())
-                        && i < (secondStudent.getSurname().length()); i++)
+                for (int i = 0; i < (firstStudent.length())
+                        && i < (secondStudent.length()); i++)
                 {
-                    diff = firstStudent.getSurname().charAt(i) -
-                            secondStudent.getSurname().charAt(i);
+                    diff = firstStudent.charAt(i) - secondStudent.charAt(i);
                     if (diff > 0)
                     {
                         return diff;
@@ -80,7 +81,7 @@ public class SmartArrayApp {
                         return diff;
                     }
                 }
-                diff = firstStudent.getSurname().length() - secondStudent.getSurname().length();
+                diff = firstStudent.length() - secondStudent.length();
                 return diff;
             }
         };
@@ -88,7 +89,8 @@ public class SmartArrayApp {
         MyFunction func = new MyFunction() {
             @Override
             public Object apply(Object t) {
-                return ((Student) t).getSurname() + " " + ((Student) t).getName();
+                return ((Student) t).getSurname()
+                        + " " + ((Student) t).getName();
             }
         };
 

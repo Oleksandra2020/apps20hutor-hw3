@@ -36,8 +36,8 @@ public class FilterDecorator extends SmartArrayDecorator {
 
     @Override
     public String operationDescription() {
-        return "Returns a new array with objects, " +
-                "for which MyPredicate object returned true";
+        return "Returns a new array with objects, "
+                + "for which MyPredicate object returned true";
     }
 
     @Override
