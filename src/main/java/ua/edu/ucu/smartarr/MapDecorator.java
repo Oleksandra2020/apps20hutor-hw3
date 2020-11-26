@@ -1,14 +1,17 @@
 package ua.edu.ucu.smartarr;
 
+import lombok.Getter;
+import lombok.Setter;
 import ua.edu.ucu.functions.MyFunction;
 
 // Map every element to another object using MyFunction
-public class MapDecorator extends SmartArrayDecorator{
-    MyFunction func;
+public class MapDecorator extends SmartArrayDecorator {
+    @Getter @Setter
+    private MyFunction func;
 
     public MapDecorator(SmartArray smartArray, MyFunction func) {
         super(smartArray);
-        this.func = func;
+        setFunc(func);
     }
 
     public Object[] mapArray(Object[] array)
@@ -17,7 +20,7 @@ public class MapDecorator extends SmartArrayDecorator{
         int i = 0;
         for (Object o: array)
         {
-            newArray[i] = func.apply(array[i]);
+            newArray[i] = getFunc().apply(array[i]);
             i++;
         }
         return newArray;

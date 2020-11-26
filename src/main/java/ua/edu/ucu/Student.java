@@ -1,22 +1,21 @@
 package ua.edu.ucu;
-import java.util.Objects;
 
 class Student {
 
-    private double GPA;
+    private double gpa;
     private int year;
     private String name;
     private String surname;
 
-    public Student(String name, String surname, double GPA, int year) {
-        this.GPA = GPA;
+    public Student(String name, String surname, double gpa, int year) {
+        this.gpa = gpa;
         this.year = year;
         this.name = name;
         this.surname = surname;
     }
 
     public double getGPA() {
-        return GPA;
+        return gpa;
     }
 
     public int getYear() {
@@ -33,7 +32,8 @@ class Student {
 
     @Override
     public String toString() {
-        return "Student{name=" + name + ", surname=" + surname + ", " + "GPA=" + GPA + ", year=" + year + '}';
+        return "Student{name=" + name + ", surname=" +
+                surname + ", " + "GPA=" + gpa + ", year=" + year + '}';
     }
 
     @Override

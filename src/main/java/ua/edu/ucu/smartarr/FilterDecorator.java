@@ -1,16 +1,19 @@
 package ua.edu.ucu.smartarr;
 
+import lombok.Getter;
+import lombok.Setter;
 import ua.edu.ucu.functions.MyPredicate;
 
 import java.util.ArrayList;
 
 // Tests every element and removes it if it doesn't satisfy MyPredicate
 public class FilterDecorator extends SmartArrayDecorator {
-    public MyPredicate pr;
+    @Getter @Setter
+    private MyPredicate pr;
 
     public FilterDecorator(SmartArray smartArray, MyPredicate pr) {
         super(smartArray);
-        this.pr = pr;
+        setPr(pr);
     }
 
     public Object[] filerArray(Object[] array)
@@ -18,7 +21,7 @@ public class FilterDecorator extends SmartArrayDecorator {
         ArrayList<Object> newArray = new ArrayList<>();
         for (Object o: array)
         {
-            if (pr.test(o))
+            if (getPr().test(o))
             {
                 newArray.add(o);
             }
@@ -33,7 +36,8 @@ public class FilterDecorator extends SmartArrayDecorator {
 
     @Override
     public String operationDescription() {
-        return "Result is a new array with objects, for which MyPredicate object returned true";
+        return "Returns a new array with objects, " +
+                "for which MyPredicate object returned true";
     }
 
     @Override

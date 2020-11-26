@@ -1,7 +1,6 @@
 package ua.edu.ucu.smartarr;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 // Remove duplicates from SmartArray. Use method equals() to compare objects
 public class DistinctDecorator extends SmartArrayDecorator{
@@ -25,7 +24,9 @@ public class DistinctDecorator extends SmartArrayDecorator{
                 }
             }
             if (!repeat)
+            {
                 newArray.add(array[i]);
+            }
         }
         return newArray.toArray();
     }

@@ -1,22 +1,25 @@
 package ua.edu.ucu.smartarr;
 
+import lombok.Getter;
+import lombok.Setter;
 import ua.edu.ucu.functions.MyComparator;
 
 import java.util.Arrays;
 
 // Sorts elements using MyComparator to compare them
 public class SortDecorator extends SmartArrayDecorator {
-    MyComparator cmp;
+    @Setter @Getter
+    private MyComparator cmp;
 
     public SortDecorator(SmartArray smartArray, MyComparator cmp) {
         super(smartArray);
-        this.cmp = cmp;
+        setCmp(cmp);
     }
 
     public Object[] sortArray(Object[] array)
     {
         Object[] newArray = array.clone();
-        Arrays.sort(newArray, cmp);
+        Arrays.sort(newArray, getCmp());
         return newArray;
     }
 

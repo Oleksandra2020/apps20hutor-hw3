@@ -20,8 +20,8 @@ public class SmartArrayApp {
 
         MyComparator cmp = new MyComparator() {
             @Override
-            public int compare(Object o1, Object o2) {
-                return ((Integer) o1) - ((Integer) o2);
+            public int compare(Object firstObject, Object secondObject) {
+                return ((Integer) firstObject) - ((Integer) secondObject);
             }
         };
 
@@ -55,21 +55,23 @@ public class SmartArrayApp {
         MyPredicate pr = new MyPredicate() {
             @Override
             public boolean test(Object t) {
-                return (((Student) t).getGPA() >= 4 && ((Student) t).getYear() == 2);
+                return (((Student) t).getGPA() >= 4
+                        && ((Student) t).getYear() == 2);
             }
         };
 
         MyComparator cmp = new MyComparator() {
             @Override
-            public int compare(Object o1, Object o2) {
-                Student student1 = (Student) o1;
-                Student student2 = (Student) o2;
+            public int compare(Object firstObject, Object secondObject) {
+                Student firstStudent = (Student) firstObject;
+                Student secondStudent = (Student) secondObject;
                 int diff;
 
-                for (int i = 0; i < (student1.getSurname().length())
-                        && i < (student2.getSurname().length()); i++)
+                for (int i = 0; i < (firstStudent.getSurname().length())
+                        && i < (secondStudent.getSurname().length()); i++)
                 {
-                    diff = student1.getSurname().charAt(i) - student2.getSurname().charAt(i);
+                    diff = firstStudent.getSurname().charAt(i) -
+                            secondStudent.getSurname().charAt(i);
                     if (diff > 0)
                     {
                         return diff;
@@ -78,7 +80,7 @@ public class SmartArrayApp {
                         return diff;
                     }
                 }
-                diff = student1.getSurname().length() - student2.getSurname().length();
+                diff = firstStudent.getSurname().length() - secondStudent.getSurname().length();
                 return diff;
             }
         };
